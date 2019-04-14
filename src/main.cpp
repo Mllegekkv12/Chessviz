@@ -1,6 +1,6 @@
 #include "board_start.h"
-#include "board_print_plain.h"
-#include "board.h"
+#include "board_print_plan.h"
+//#include "board.h"
 int main()
 {
     char deck[8][8];
@@ -8,6 +8,6 @@ int main()
     while (1)
     {
         board_print_plain(deck);
-        board(deck);
+        //board(deck);
     }
 }

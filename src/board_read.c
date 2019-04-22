@@ -9,7 +9,7 @@ char *board_read() {
         scanf("%6s", str);
         flag = (check_input(str));
         if (flag) {
-            printf("Incorrect input, try again\n");
+           // printf("Incorrect input, try again\n");
         }
     } while (flag);
     return str;

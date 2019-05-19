@@ -3,7 +3,20 @@ CC = gcc
 OBJ = $(CC) -c $< -o $@ $(CFLAGS)
 MKDIR_BUILD = mkdir -p build/src
 
+.PHONY: clean test
+
 default: bin/chess.exe
+
+test: bin/chess_test.exe
+	$<
+
+bin/chess_test.exe: build/test/main_test.o build/src/board_print_plain.o build/src/board_start.o build/src/board.o build/src/board_read.o
+	mkdir -p bin
+	$(CC) $^ -o $@ $(CFLAGS)
+
+build/test/main_test.o: test/main.c thirdparty/ctest.h src/board.h
+	mkdir -p build/test
+	$(OBJ) -I thirdparty -I src
 
 bin/chess.exe: build/src/main.o build/src/board_print_plain.o build/src/board_start.o build/src/board.o build/src/board_read.o
 	mkdir -p bin

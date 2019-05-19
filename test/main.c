@@ -1,27 +1,24 @@
 #define CTEST_MAIN
 
-#include <board.h>
 #include <board_read.h>
 #include <board_start.h>
+#include <board.h>
 
 #include <ctest.h>
 
-CTEST(Syntax, Correct)
-{
+CTEST(Syntax, Correct) {
     int result = check_input("b2-b5");
     int expected = 0;
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(Syntax, Incorrect)
-{
+CTEST(Syntax, Incorrect) {
     int result = check_input("a2-a9");
     int expected = 1;
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(Black_pawn, Correct)
-{
+CTEST(Black_pawn, Correct) {
     char deck[8][8];
     board_start(deck);
     char input[] = "a7-a5";
@@ -32,8 +29,7 @@ CTEST(Black_pawn, Correct)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(Black_pawn, Incorrect)
-{
+CTEST(Black_pawn, Incorrect) {
     char deck[8][8];
     board_start(deck);
     char input[] = "a7-b6";
@@ -44,8 +40,7 @@ CTEST(Black_pawn, Incorrect)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(Check_move, Correct)
-{
+CTEST(Check_move, Correct) {
     char deck[8][8];
     board_start(deck);
     char input[] = "c7-c6";
@@ -56,8 +51,7 @@ CTEST(Check_move, Correct)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(Check_move, Incorrect)
-{
+CTEST(Check_move, Incorrect) {
     char deck[8][8];
     board_start(deck);
     char input[] = "e5-e6";
@@ -68,7 +62,6 @@ CTEST(Check_move, Incorrect)
     ASSERT_EQUAL(expected, result);
 }
 
-int main(int argc, const char** argv)
-{
+int main(int argc, const char** argv) {
     return ctest_main(argc, argv);
 }
